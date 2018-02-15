@@ -1,24 +1,10 @@
-# README
+# Boiler_Control_Server
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Server side for Boiler_Control project. *ELSYS-2018*
 
-Things you may want to cover:
+Idea: Вдигане на сървър и мобилно приложение за андройд, посредством което да се предлага отдалечен достъп за контрол на отоплителната система у дома.
+На място се помещава ардуино с тъчскриин дисплей за лесен достъп (GUI), което посредством релета включва изключва бойлер, конвектори и т.н.
 
-* Ruby version
+App Repo - https://github.com/DanyYanev/Boiler_Control_App
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Controller Repo - https://github.com/DanyYanev/Boiler_Control_Controller
