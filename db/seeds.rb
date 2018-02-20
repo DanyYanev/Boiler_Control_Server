@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(ip: '192.168.x.x', port: 12345);
+user = User.create(ip: '192.168.1.1', port: 12345);
 Value.create(user_id: user.id, key: "PoolPump", value: 0);
 Value.create(user_id: user.id, key: "FloorPump", value: 0);
 Value.create(user_id: user.id, key: "ConvPump", value: 0);
