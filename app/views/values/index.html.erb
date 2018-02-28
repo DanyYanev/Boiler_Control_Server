@@ -15,7 +15,7 @@
   <tbody>
     <% @values.each do |value| %>
       <tr>
-        <td><%= value.user %></td>
+        <td><%= value.user.id %></td>
         <td><%= value.key %></td>
         <td><%= value.value %></td>
         <td><%= link_to 'Show', value %></td>
@@ -29,3 +29,4 @@
 <br>
 
 <%= link_to 'New Value', new_value_path %>
+<%= link_to 'Users', users_path %>
