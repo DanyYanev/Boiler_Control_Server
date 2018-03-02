@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
+      <th>User Token</th>
       <th>Key</th>
       <th>Value</th>
       <th colspan="3"></th>
@@ -15,7 +15,7 @@
   <tbody>
     <% @values.each do |value| %>
       <tr>
-        <td><%= value.user.id %></td>
+        <td><%= value.user.token %></td>
         <td><%= value.key %></td>
         <td><%= value.value %></td>
         <td><%= link_to 'Show', value %></td>

@@ -1,8 +1,8 @@
 class CreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
-      t.string :ip
-      t.integer :port
+      t.string :token
+      t.string :controller_token
 
       t.timestamps
     end

@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
     respond_to do |format|
       # if @user.nil?
       format.json { render :show }
@@ -36,6 +37,12 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+
+    random = ""
+    begin
+      random = SecureRandom.hex(5)
+    end while User.where(:token => random).count > 0
+    @user.token = random
 
     respond_to do |format|
       if @user.save
@@ -75,11 +82,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.where(:token => params[:id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:ip, :port)
+      params.require(:user).permit(:token, :controller_token)
     end
 end

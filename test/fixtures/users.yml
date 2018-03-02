@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  ip: MyString
-  port: 1
+  token: MyString
+  controller_token: MyString
 
 two:
-  ip: MyString
-  port: 1
+  token: MyString
+  controller_token: MyString
