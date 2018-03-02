@@ -1,3 +1,5 @@
+require 'json'
+
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -10,6 +12,15 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    respond_to do |format|
+      # if @user.nil?
+      format.json { render :show }
+      format.html { render :show }
+      # else
+      #   format.html { render :new }
+      #   format.json { render json: @user.errors, status: :unprocessable_entity }
+      # end
+    end
   end
 
   # GET /users/new
