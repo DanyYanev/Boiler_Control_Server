@@ -58,14 +58,30 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+
+    json = JSON.parse request.body.read
+
+    if(json.key?("values"))
+      json["values"].each do |entry|
+        @value = @user.values.where(:key => entry["key"]).first
+
+        if(!@value.nil?)
+          puts "FOUND - #{entry["key"]} updating to #{entry["value"]}"
+          @value.value = entry["value"]
+          @value.save
+        else
+          puts "DIDNT FIND - #{entry["key"]}"
+        end
       end
+    end
+    respond_to do |format|
+    #   if @user.update(user_params)
+    #     format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :show }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
     end
   end
 
