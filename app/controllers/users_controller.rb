@@ -61,19 +61,32 @@ class UsersController < ApplicationController
 
     json = JSON.parse request.body.read
 
-    if(json.key?("values"))
-      json["values"].each do |entry|
-        @value = @user.values.where(:key => entry["key"]).first
+    # if(json.key?("values"))
+    #   json["values"].each do |entry|
+    #     @value = @user.values.where(:key => entry["key"]).first
+    #
+    #     if(!@value.nil?)
+    #       puts "FOUND - #{entry["key"]} updating to #{entry["value"]}"
+    #
+    #       @value.value = entry["value"]
+    #       @value.save
+    #     else
+    #       puts "DIDNT FIND - #{entry["key"]}"
+    #     end
+    #   end
+    # end WORKING CODE
 
-        if(!@value.nil?)
-          puts "FOUND - #{entry["key"]} updating to #{entry["value"]}"
-          @value.value = entry["value"]
-          @value.save
-        else
-          puts "DIDNT FIND - #{entry["key"]}"
-        end
+    json["values_attributes"].each do |value|
+      if(@user.values.where(:key => value["key"]).first.nil?)
+        puts "NOT FOUND #{value["key"]}"
+      else
+        puts "FOUND #{value["key"]}"
+        value["id"] = @user.values.where(:key => value["key"]).first.id
       end
     end
+
+    @user.update(json)
+
     respond_to do |format|
     #   if @user.update(user_params)
     #     format.html { redirect_to @user, notice: 'User was successfully updated.' }
