@@ -61,21 +61,6 @@ class UsersController < ApplicationController
 
     json = JSON.parse request.body.read
 
-    # if(json.key?("values"))
-    #   json["values"].each do |entry|
-    #     @value = @user.values.where(:key => entry["key"]).first
-    #
-    #     if(!@value.nil?)
-    #       puts "FOUND - #{entry["key"]} updating to #{entry["value"]}"
-    #
-    #       @value.value = entry["value"]
-    #       @value.save
-    #     else
-    #       puts "DIDNT FIND - #{entry["key"]}"
-    #     end
-    #   end
-    # end WORKING CODE
-
     json["values_attributes"].each do |value|
       if(@user.values.where(:key => value["key"]).first.nil?)
         puts "NOT FOUND #{value["key"]}"
