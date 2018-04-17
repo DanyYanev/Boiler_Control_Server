@@ -10,9 +10,10 @@ App Repo - https://github.com/DanyYanev/Boiler_Control_App
 Controller Repo - https://github.com/DanyYanev/Boiler_Control_Controller
 
 
-#API Instructions:
+# API Instructions:
   GET "/users/id.json" -> Json with all variables of current user
   Example:
+  ```
     {
     "token": "12345",
     "controller_token": "testing",
@@ -56,10 +57,11 @@ Controller Repo - https://github.com/DanyYanev/Boiler_Control_Controller
       "key": "HTemp",
       "value": 32
     }]
-}
-  
+  }
+  ```
   PUT "/users/id" With json -> Updates current variables for user.
   Example:
+  ```
   {
   "token": "12345",
   "controller_token": "testing",
@@ -103,4 +105,5 @@ Controller Repo - https://github.com/DanyYanev/Boiler_Control_Controller
     "key": "HTemp",
     "value": 32
   }]
-}
+  }
+  ```
